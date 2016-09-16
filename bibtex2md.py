@@ -1,8 +1,9 @@
 # an exporter for hexo
 
-# read bibtex
-
+import datetime
 import bibtexparser
+
+# read bibtex
 
 with open('/Users/nel/Documents/tex/nel.bib') as f:
     bibdb = bibtexparser.loads(f.read())
@@ -17,7 +18,7 @@ procs    = get_type_of('inproceedings')
 
 print("---")
 print("title: Publications")
-print("date: 2016-09-16 14:08:18")
+print("date: ", datetime.datetime.today())
 print("permalink: pub")
 print("---")
 print("")
