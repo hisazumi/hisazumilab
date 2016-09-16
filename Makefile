@@ -10,5 +10,6 @@ server: source/_posts/Publications.md
 	$(HEXO) server
 
 deploy: source/_posts/Publications.md
+	hexo generate
 	$(HEXO) deploy 
 
