@@ -22,5 +22,6 @@ permalink: about
 
 # 連絡先
 
+久住 憲嗣 (ひさずみ けんじ)
 email: nel slrc.kyushu-u.ac.jp
 住所: 〒819-0395 福岡市西区元岡744番地 ウエスト2号館 754号室
