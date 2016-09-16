@@ -1,13 +1,14 @@
-HPATH=$(HOME)/Documents/Web
-HEXO=$(HPATH)/node_modules/hexo/bin/hexo
+HEXO=hexo
 BIB=$(HOME)/Documents/tex/nel.bib
 
-bib: bibtex2md.py
+all:
+
+source/_posts/Publications.md: bibtex2md.py $(BIB)
 	python3 bibtex2md.py > source/_posts/Publications.md
 
-server: bib
+server: source/_posts/Publications.md
 	$(HEXO) server
 
-deploy: bib
+deploy: source/_posts/Publications.md
 	$(HEXO) deploy 
 
