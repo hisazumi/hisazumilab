@@ -27,6 +27,18 @@ def strip(str):
 def author(str):
 	return remove_commna_in_japanese(str)
 
+def emit_author(e):
+	if "jauthor" in e:
+		return '1. ' + e['author'] + '(著), ' + author(e['jauthor']) + '(訳)' + ': '
+	else:
+		return '1. ' + e['author'] + ': '
+
+def emit_pages(e):
+	if "pages" in e:
+		return ", pp." + e['pages']
+	else:
+		return ""	
+
 # read bibtex
 
 with open('/Users/nel/Documents/tex/nel.bib') as f:
@@ -49,27 +61,31 @@ print("---")
 print("")
 
 # books
+def emit_book(e):
+	return strip(emit_author(e) + e['title'] + ',' + e['publisher'] + emit_pages(e) + ',' + e['year'] + ".")
+
 print("# Books")
 print("")
 for e in books:
-	if "jauthor" in e:
-		str = '1. ' + e['author'] + '(著), ' + author(e['jauthor']) + '(訳)' + ':' + e['title'] + ',' + e['publisher'] + ',' + e['year'] + "."
-	else:
-		str = '1. ', e['author'],': ', e['title'], ',', e['publisher'], ',', e['year'], "."
-	print(strip(str))
+	print(emit_book(e))
 	print('')
 
 # journals
+def emit_journal(e):
+	return strip(emit_author(e) + e['title'] + ',' + e['journal'] + ',' + e['publisher'] + emit_pages(e) + ',' + e['year'] + ".")
+
 print("# Journals")
 print("")
 for e in journals:
-	print(strip('1. ' + author(e['author']) + ': ' + e['title'] + ',' + e['journal'] + ',' + e['year'] + "."))
+	print(emit_journal(e))
 	print('')
 
 # conferences & workshops
+def emit_proc(e):
+	return strip(emit_author(e) + e['title'] + ',' + e['booktitle'] + emit_pages(e) + ',' + e['year'] + ".")
+
 print("# Conferences & Workshops")
 print("")
 for e in procs:
-	#print(e)
-	print(strip('1. ' + author(e['author']) + ': ' + e['title'] + ',' + e['booktitle'] + ',' + e['year'] + "."))
+	print(emit_proc(e))
 	print('')
