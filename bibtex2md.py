@@ -2,6 +2,30 @@
 
 import datetime
 import bibtexparser
+import unicodedata
+
+# some utilities
+
+def is_japanese(string):
+    for ch in string:
+        name = unicodedata.name(ch) 
+        if "CJK UNIFIED" in name \
+        or "HIRAGANA" in name \
+        or "KATAKANA" in name:
+            return True
+    return False
+
+def remove_commna_in_japanese(string):
+	if is_japanese(string):
+		return string.replace(',', '')
+	else:
+		return string
+
+def strip(str):
+	return str.replace(' ,', ',').replace(',', ', ').replace(' .', '.')
+
+def author(str):
+	return remove_commna_in_japanese(str)
 
 # read bibtex
 
@@ -28,19 +52,18 @@ print("")
 print("# Books")
 print("")
 for e in books:
-	#print(e)
 	if "jauthor" in e:
-		print('1. ', e['author'],'(著)', e['jauthor'], '(訳)', ':', e['title'], ',', e['publisher'], ',', e['year'], ".")
+		str = '1. ' + e['author'] + '(著), ' + author(e['jauthor']) + '(訳)' + ':' + e['title'] + ',' + e['publisher'] + ',' + e['year'] + "."
 	else:
-		print('1. ', e['author'],':', e['title'], ',', e['publisher'], ',', e['year'], ".")
+		str = '1. ', e['author'],': ', e['title'], ',', e['publisher'], ',', e['year'], "."
+	print(strip(str))
 	print('')
 
 # journals
 print("# Journals")
 print("")
 for e in journals:
-	#print(e)
-	print('1. ', e['author'], ':', e['title'], ',', e['journal'], ',', e['year'], ".")
+	print(strip('1. ' + author(e['author']) + ': ' + e['title'] + ',' + e['journal'] + ',' + e['year'] + "."))
 	print('')
 
 # conferences & workshops
@@ -48,5 +71,5 @@ print("# Conferences & Workshops")
 print("")
 for e in procs:
 	#print(e)
-	print('1. ', e['author'], ':', e['title'], ',', e['booktitle'], ',', e['year'], ".")
+	print(strip('1. ' + author(e['author']) + ': ' + e['title'] + ',' + e['booktitle'] + ',' + e['year'] + "."))
 	print('')
