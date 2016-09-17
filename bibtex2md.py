@@ -31,7 +31,7 @@ def emit_author(e):
 	if "jauthor" in e:
 		return '1. ' + e['author'] + '(著), ' + author(e['jauthor']) + '(訳)' + ': '
 	else:
-		return '1. ' + e['author'] + ': '
+		return '1. ' + author(e['author']) + ': '
 
 def emit_pages(e):
 	if "pages" in e:
