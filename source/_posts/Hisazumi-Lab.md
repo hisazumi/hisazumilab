@@ -5,14 +5,14 @@ tags:
 permalink: about
 ---
 
-# 研究
+# 研究 (Reserach)
 
 所属はシステム「LSI」研究センターですが、基本的にはソフトウェアが専門です。組込みシステムの、特に開発方法について興味があります。理論的側面だけではなく実装技術にも注力しています。技術分野としては以下の通りです。
 
-* 組込みシステム
+* 組込みシステム (Embedded System)
 * ドメイン特化言語 (Domain-Specific Language; DSL)
-* リアルタイム・省電力モデル
-* ソフトウェアプロダクトライン
+* リアルタイム・省電力モデル (Realtime and Energy/Power Consumption MOdel)
+* ソフトウェアプロダクトライン (Software Product Line Engineering)
 
 # 学生のみなさまへ
 
@@ -25,3 +25,7 @@ permalink: about
 久住 憲嗣 (ひさずみ けんじ)
 email: nel slrc.kyushu-u.ac.jp
 住所: 〒819-0395 福岡市西区元岡744番地 ウエスト2号館 754号室
+
+Kenji Hisazumi
+email: nel slrc.kyushu-u.ac.jp
+address: 744 Motooka, Nishi-ku, Fukuoka, Fukuoka, 819-0395, Japan
