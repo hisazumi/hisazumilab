@@ -3,6 +3,7 @@
 import datetime
 import bibtexparser
 import unicodedata
+import re
 
 # some utilities
 
@@ -21,11 +22,24 @@ def remove_commna_in_japanese(string):
 	else:
 		return string
 
+def strip_space(string):
+	return re.sub(r' +', ' ', string)
+
+def authors(string):
+	return ",".join([abbrev_in_english(item) for item in string.split('and')])
+
+def abbrev_in_english(string):
+	comma_n = string.find(',')
+	if comma_n < 0:
+		return string
+	else:
+		return string[comma_n+1:] + " " + string[0:comma_n]
+
 def strip(str):
-	return str.replace(' ,', ',').replace(',', ', ').replace(' .', '.')
+	return strip_space(str).replace(' ,', ',').replace(',', ',').replace(' .', '.')
 
 def author(str):
-	return remove_commna_in_japanese(str)
+	return authors(remove_commna_in_japanese(str))
 
 def emit_author(e):
 	if "jauthor" in e:
