@@ -1,9 +1,9 @@
 HEXO=hexo
-BIB=$(HOME)/Documents/tex/nel.bib
+BIB=$(HOME)/GD/tex/nel.bib
 
-all:
+all: source/_posts/Publications.md
 
-source/_posts/Publications.md: bibtex2md.py $(BIB)
+source/_posts/Publications.md: bibtex2md.py $(BIB) pub-tmpl.md
 	python3 bibtex2md.py > source/_posts/Publications.md
 
 server: source/_posts/Publications.md
