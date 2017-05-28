@@ -1,0 +1,6 @@
+{% for e in journals %}
+"{{e['author']}}", {{e['title']}}, {{e['refs']}}, {{e['yearmonth']}}
+{% endfor %}
+{% for e in procs %}
+"{{e['author']}}", {{e['title']}}, {{e['refs']}}, {{e['yearmonth']}}
+{% endfor %}

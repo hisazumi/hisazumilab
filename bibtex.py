@@ -72,6 +72,7 @@ def read_bib(filename):
 def get_type_of_bib(bibdb, type):
     transforms = {'author': format_authors,
                   'title': format_identity,
+                  'month': format_identity,
                   'year': format_identity}
     entries = [e for e in bibdb.entries if e['ENTRYTYPE'] == type]
     result = []
