@@ -1,0 +1,17 @@
+# Journals
+{% for y in years %}
+\hline
+{{y}}\\
+{% for e in journals if e['year'] == y %}
+\\KLbibitem {{e['author']}}: {{e['title']}}, {{e['refs']}}, {{e['year']}}.
+{% endfor %}
+{% endfor %}
+
+# Conferences & Workshops
+{% for y in years %}
+\hline
+{{y}}\\
+{% for e in procs if e['year'] == y %}
+\\KLbibitem {{e['author']}}: {{e['title']}}, {{e['refs']}}, {{e['year']}}.
+{% endfor %}
+{% endfor %}
